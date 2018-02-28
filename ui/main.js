@@ -6,7 +6,7 @@ var element=document.getElementById('main-text');
 
 element.innerHTML="New Value";
 
-var img=document.getElemenetById('mardi');
+var img=document.getElementById('mardi');
 
 img.onclick= function()
 {
