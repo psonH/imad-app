@@ -19,6 +19,6 @@ button.onclick=function(){
        //Not DONE yet
      };
      //Make request
-     request.open('GET', 'http://priyankhajela.imad.hasura-app.io/',true);
+     request.open('GET','http://priyankhajela.imad.hasura-app.io/counter',true);
      request.send(null);
 };
