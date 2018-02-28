@@ -10,11 +10,11 @@ var img=document.getElementById('mardi');
 
 var marginLeft=0;
 function moveRight() {
-    var marginLeft=marginLeft+10;
+    var marginLeft=marginLeft+5;
     img.style.marginLeft=marginLeft+'px';
 }
 img.onclick= function()
 {
-    var interval=setInterval(moveRight,100);
+    var interval=setInterval(moveRight,50);
     
 };
