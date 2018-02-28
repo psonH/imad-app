@@ -6,33 +6,51 @@ var app = express();
 app.use(morgan('combined'));
 
 
-
-var articleOne={
-    title:'Article One | Priyank Hajela',
-    date:'February 27,2018',
-    heading:'Article One',
-    content:`  <p>
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                        </p>
-                        <p>
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
-                        </p>
-                        <p>
-                            This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.
-                            This is the my first article.This is the my first article.
-                        </p>`
+var articles={
+     'article-one':{
+                title:'Article One | Priyank Hajela',
+                date:'February 27,2018',
+                heading:'Article One',
+                content:` <p>
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                    </p>
+                                    <p>
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.This is the my first article.This is the my first article.This is the my first article.
+                                    </p>
+                                    <p>
+                                        This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.
+                                        This is the my first article.This is the my first article.
+                                    </p>`
+            },
+     'article-two':{
+                title:'Article Two | Priyank Hajela',
+                date:'March 27,2018',
+                heading:'Article Two',
+                content:`  <p>
+                                        This is the my second article.`
+                            
+            },
+     'article-three':{
+                title:'Article Three | Priyank Hajela',
+                date:'April 27,2018',
+                heading:'Article Three',
+                content:`  <p>
+                              This is my third article.
+                              </p>`
+                                    
+            }
 };
 
 function createTemplate(data){
@@ -74,18 +92,12 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-    res.send(createTemplate(articleOne));
+app.get('/:ArticleNames',function(req,res){
+    //ArticleNames == article-one
+    //articles[ArticleName] == {} content object of article one
+    var ArticleNames=req.params.ArticleNames;
+    res.send(createTemplate(articles[ArticleNames]));
 });
-
-app.get('/article-two',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-two.html'));
-});
-
-app.get('/article-three',function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'article-three.html'));
-});
-
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
