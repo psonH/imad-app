@@ -25,11 +25,12 @@ button.onclick=function(){
 
 
 //Submit name
- var nameInput=document.getElementById('name');
- var naam=nameInput.value;
+
  var submit=document.getElementById('submit_btn');
  submit.onclick=function(){
-     
+    //Moved inside onclick function otherwise the names don't render 
+    var nameInput=document.getElementById('name');
+    var naam=nameInput.value; 
     var request=new XMLHttpRequest();
     //Capture the response and store it in a variable
     request.onreadystatechange = function(){
